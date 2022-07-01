@@ -1,4 +1,4 @@
-package com.sq.files;
+package com.sq.raplace_tools;
 
 import org.apache.commons.io.FilenameUtils;
 import org.jsoup.Jsoup;

@@ -1,4 +1,4 @@
-package com.sq.files;
+package com.sq.raplace_tools;
 
 import java.io.File;
 import java.io.FileInputStream;

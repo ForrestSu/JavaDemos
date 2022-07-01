@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sq.files;
+package com.sq.raplace_tools;
 
 import java.io.FileInputStream;
 import java.io.IOException;
