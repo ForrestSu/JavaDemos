@@ -7,9 +7,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,7 +16,6 @@ import java.util.regex.Pattern;
 class Item {
     String key;
     String value;
-    String comment;
 
     public Item(String key, String value) {
         this.key = key;
@@ -30,10 +27,9 @@ class Item {
     }
 
     // CacheVidPutFail   = metrics.Counter("Cache-VidPutFail")   // 视频缓存-写入失败
-    public String Format() {
-        return String.format("%s%s = metrics.Counter(\"%s-%s\")", key, value, key, value);
+    public String ToDeclare(String note) {
+        return String.format("%s%s = metrics.Counter(\"%s-%s\") // %s", key, value, key, value, note);
     }
-
 }
 
 class SortByKV implements Comparator<Item> {
@@ -120,7 +116,7 @@ public class GoReplace {
             if (file.isDirectory()) {
                 iCount += VisitDir(file.getPath());
             } else {
-                iCount += rewriteGoFile(file, false);
+                iCount += rewriteGoFile(file, true);
             }
         }
         return iCount;
@@ -128,20 +124,68 @@ public class GoReplace {
 
 
     // 生成定义
-    public static void generateDefine(List<Item> reminds) {
+    public static void generateDefine(List<Item> reminds,
+                                      Map<String, String> keyNotes,
+                                      Map<String, String> valueNotes) {
         reminds.sort(new SortByKV());
         for (Item item : reminds) {
-            System.out.println(item.Format());
+            // 块注释
+            if (keyNotes.containsKey(item.key)) {
+                System.out.println("// " + item.key + " " + keyNotes.get(item.key));
+                keyNotes.remove(item.key);
+            }
+            // 定义
+            if (valueNotes.containsKey(item.value)) {
+                System.out.println(item.ToDeclare(valueNotes.get(item.value)));
+            } else {
+                System.err.println(item.value + "Not found!");
+            }
         }
     }
 
 
     public static void main(String[] args) {
+        System.out.println(System.getProperty("user.dir"));
+        Map<String, String> valueNotes = loadNotes("demo/resources/metric.go");
+        Map<String, String> keyNotes = loadNotes("demo/resources/key.go");
+
         String src_path = "/Users/sq/go_workspace/aid_free_sys";
         GoReplace rpl = new GoReplace();
         int iCount = rpl.VisitDir(src_path);
-        generateDefine(rpl.reminds);
+        generateDefine(rpl.reminds, keyNotes, valueNotes);
         System.out.println("Replaced total " + iCount + "！");
     }
+
+    // value comments
+    public static Map<String, String> loadNotes(String fileName) {
+        Map<String, String> notes = new HashMap<>();
+        final File metric = new File(fileName);
+        try {
+            List<String> rows = FileUtils.readLines(metric, MD_FILE_ENCODING);
+            for (int k = 0; k < rows.size(); ++k) {
+                final String line = rows.get(k).trim();
+                if (line.isEmpty()) {
+                    continue;
+                }
+                if (line.startsWith("//")) {
+                    continue;
+                }
+                String[] arrs = line.split("//");
+                if (arrs.length != 2) {
+                    System.err.println(k + line);
+                    continue;
+                }
+                String key = arrs[0].trim();
+                String comment = arrs[1].trim();
+                // System.out.println(key + "+" + comment);
+                notes.put(key, comment);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return notes;
+    }
 }
+
+
 
