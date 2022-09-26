@@ -18,6 +18,6 @@ public class SigInt {
      * @param task to run on reception of the signal.
      */
     public static void register(final Runnable task) {
-        Signal.handle(new Signal("INT"), (signal) -> task.run());
+//        Signal.handle(new Signal("INT"), (signal) -> task.run());
     }
 }

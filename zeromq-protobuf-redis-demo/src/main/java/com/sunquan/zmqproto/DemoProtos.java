@@ -6,7 +6,13 @@ package com.sunquan.zmqproto;
 public final class DemoProtos {
   private DemoProtos() {}
   public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface LoginOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.sunquan.zmqproto.Login)
@@ -14,101 +20,115 @@ public final class DemoProtos {
 
     /**
      * <code>optional int64 userid = 1;</code>
+     * @return Whether the userid field is set.
      */
     boolean hasUserid();
     /**
      * <code>optional int64 userid = 1;</code>
+     * @return The userid.
      */
     long getUserid();
 
     /**
-     * <code>optional string username = 2;</code>
-     *
      * <pre>
      * name
      * </pre>
+     *
+     * <code>optional string username = 2;</code>
+     * @return Whether the username field is set.
      */
     boolean hasUsername();
     /**
-     * <code>optional string username = 2;</code>
-     *
      * <pre>
      * name
      * </pre>
+     *
+     * <code>optional string username = 2;</code>
+     * @return The username.
      */
     java.lang.String getUsername();
     /**
-     * <code>optional string username = 2;</code>
-     *
      * <pre>
      * name
      * </pre>
+     *
+     * <code>optional string username = 2;</code>
+     * @return The bytes for username.
      */
     com.google.protobuf.ByteString
         getUsernameBytes();
 
     /**
-     * <code>optional string password = 3;</code>
-     *
      * <pre>
      * passwd
      * </pre>
+     *
+     * <code>optional string password = 3;</code>
+     * @return Whether the password field is set.
      */
     boolean hasPassword();
     /**
-     * <code>optional string password = 3;</code>
-     *
      * <pre>
      * passwd
      * </pre>
+     *
+     * <code>optional string password = 3;</code>
+     * @return The password.
      */
     java.lang.String getPassword();
     /**
-     * <code>optional string password = 3;</code>
-     *
      * <pre>
      * passwd
      * </pre>
+     *
+     * <code>optional string password = 3;</code>
+     * @return The bytes for password.
      */
     com.google.protobuf.ByteString
         getPasswordBytes();
 
     /**
      * <code>optional string email = 4;</code>
+     * @return Whether the email field is set.
      */
     boolean hasEmail();
     /**
      * <code>optional string email = 4;</code>
+     * @return The email.
      */
     java.lang.String getEmail();
     /**
      * <code>optional string email = 4;</code>
+     * @return The bytes for email.
      */
     com.google.protobuf.ByteString
         getEmailBytes();
 
     /**
-     * <code>optional string nickname = 5;</code>
-     *
      * <pre>
      * etc ... 
      * </pre>
+     *
+     * <code>optional string nickname = 5;</code>
+     * @return Whether the nickname field is set.
      */
     boolean hasNickname();
     /**
-     * <code>optional string nickname = 5;</code>
-     *
      * <pre>
      * etc ... 
      * </pre>
+     *
+     * <code>optional string nickname = 5;</code>
+     * @return The nickname.
      */
     java.lang.String getNickname();
     /**
-     * <code>optional string nickname = 5;</code>
-     *
      * <pre>
      * etc ... 
      * </pre>
+     *
+     * <code>optional string nickname = 5;</code>
+     * @return The bytes for nickname.
      */
     com.google.protobuf.ByteString
         getNicknameBytes();
@@ -117,36 +137,41 @@ public final class DemoProtos {
    * Protobuf type {@code com.sunquan.zmqproto.Login}
    */
   public static final class Login extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.sunquan.zmqproto.Login)
       LoginOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Login.newBuilder() to construct.
-    private Login(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Login(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Login(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Login defaultInstance;
-    public static Login getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public Login getDefaultInstanceForType() {
-      return defaultInstance;
+    private Login() {
+      username_ = "";
+      password_ = "";
+      email_ = "";
+      nickname_ = "";
     }
 
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Login();
+    }
+
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
+    getUnknownFields() {
       return this.unknownFields;
     }
     private Login(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -158,13 +183,6 @@ public final class DemoProtos {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 8: {
               bitField0_ |= 0x00000001;
               userid_ = input.readInt64();
@@ -194,13 +212,20 @@ public final class DemoProtos {
               nickname_ = bs;
               break;
             }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -211,26 +236,12 @@ public final class DemoProtos {
       return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Login_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Login_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.sunquan.zmqproto.DemoProtos.Login.class, com.sunquan.zmqproto.DemoProtos.Login.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<Login> PARSER =
-        new com.google.protobuf.AbstractParser<Login>() {
-      public Login parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Login(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Login> getParserForType() {
-      return PARSER;
     }
 
     private int bitField0_;
@@ -238,36 +249,44 @@ public final class DemoProtos {
     private long userid_;
     /**
      * <code>optional int64 userid = 1;</code>
+     * @return Whether the userid field is set.
      */
+    @java.lang.Override
     public boolean hasUserid() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000001) != 0);
     }
     /**
      * <code>optional int64 userid = 1;</code>
+     * @return The userid.
      */
+    @java.lang.Override
     public long getUserid() {
       return userid_;
     }
 
     public static final int USERNAME_FIELD_NUMBER = 2;
-    private java.lang.Object username_;
+    private volatile java.lang.Object username_;
     /**
-     * <code>optional string username = 2;</code>
-     *
      * <pre>
      * name
      * </pre>
+     *
+     * <code>optional string username = 2;</code>
+     * @return Whether the username field is set.
      */
+    @java.lang.Override
     public boolean hasUsername() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000002) != 0);
     }
     /**
-     * <code>optional string username = 2;</code>
-     *
      * <pre>
      * name
      * </pre>
+     *
+     * <code>optional string username = 2;</code>
+     * @return The username.
      */
+    @java.lang.Override
     public java.lang.String getUsername() {
       java.lang.Object ref = username_;
       if (ref instanceof java.lang.String) {
@@ -283,12 +302,14 @@ public final class DemoProtos {
       }
     }
     /**
-     * <code>optional string username = 2;</code>
-     *
      * <pre>
      * name
      * </pre>
+     *
+     * <code>optional string username = 2;</code>
+     * @return The bytes for username.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getUsernameBytes() {
       java.lang.Object ref = username_;
@@ -304,24 +325,28 @@ public final class DemoProtos {
     }
 
     public static final int PASSWORD_FIELD_NUMBER = 3;
-    private java.lang.Object password_;
+    private volatile java.lang.Object password_;
     /**
-     * <code>optional string password = 3;</code>
-     *
      * <pre>
      * passwd
      * </pre>
+     *
+     * <code>optional string password = 3;</code>
+     * @return Whether the password field is set.
      */
+    @java.lang.Override
     public boolean hasPassword() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000004) != 0);
     }
     /**
-     * <code>optional string password = 3;</code>
-     *
      * <pre>
      * passwd
      * </pre>
+     *
+     * <code>optional string password = 3;</code>
+     * @return The password.
      */
+    @java.lang.Override
     public java.lang.String getPassword() {
       java.lang.Object ref = password_;
       if (ref instanceof java.lang.String) {
@@ -337,12 +362,14 @@ public final class DemoProtos {
       }
     }
     /**
-     * <code>optional string password = 3;</code>
-     *
      * <pre>
      * passwd
      * </pre>
+     *
+     * <code>optional string password = 3;</code>
+     * @return The bytes for password.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getPasswordBytes() {
       java.lang.Object ref = password_;
@@ -358,16 +385,20 @@ public final class DemoProtos {
     }
 
     public static final int EMAIL_FIELD_NUMBER = 4;
-    private java.lang.Object email_;
+    private volatile java.lang.Object email_;
     /**
      * <code>optional string email = 4;</code>
+     * @return Whether the email field is set.
      */
+    @java.lang.Override
     public boolean hasEmail() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000008) != 0);
     }
     /**
      * <code>optional string email = 4;</code>
+     * @return The email.
      */
+    @java.lang.Override
     public java.lang.String getEmail() {
       java.lang.Object ref = email_;
       if (ref instanceof java.lang.String) {
@@ -384,7 +415,9 @@ public final class DemoProtos {
     }
     /**
      * <code>optional string email = 4;</code>
+     * @return The bytes for email.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getEmailBytes() {
       java.lang.Object ref = email_;
@@ -400,24 +433,28 @@ public final class DemoProtos {
     }
 
     public static final int NICKNAME_FIELD_NUMBER = 5;
-    private java.lang.Object nickname_;
+    private volatile java.lang.Object nickname_;
     /**
-     * <code>optional string nickname = 5;</code>
-     *
      * <pre>
      * etc ... 
      * </pre>
+     *
+     * <code>optional string nickname = 5;</code>
+     * @return Whether the nickname field is set.
      */
+    @java.lang.Override
     public boolean hasNickname() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000010) != 0);
     }
     /**
-     * <code>optional string nickname = 5;</code>
-     *
      * <pre>
      * etc ... 
      * </pre>
+     *
+     * <code>optional string nickname = 5;</code>
+     * @return The nickname.
      */
+    @java.lang.Override
     public java.lang.String getNickname() {
       java.lang.Object ref = nickname_;
       if (ref instanceof java.lang.String) {
@@ -433,12 +470,14 @@ public final class DemoProtos {
       }
     }
     /**
-     * <code>optional string nickname = 5;</code>
-     *
      * <pre>
      * etc ... 
      * </pre>
+     *
+     * <code>optional string nickname = 5;</code>
+     * @return The bytes for nickname.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getNicknameBytes() {
       java.lang.Object ref = nickname_;
@@ -453,14 +492,8 @@ public final class DemoProtos {
       }
     }
 
-    private void initFields() {
-      userid_ = 0L;
-      username_ = "";
-      password_ = "";
-      email_ = "";
-      nickname_ = "";
-    }
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -470,65 +503,137 @@ public final class DemoProtos {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000001) != 0)) {
         output.writeInt64(1, userid_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getUsernameBytes());
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, username_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getPasswordBytes());
+      if (((bitField0_ & 0x00000004) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, password_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, getEmailBytes());
+      if (((bitField0_ & 0x00000008) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, email_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(5, getNicknameBytes());
+      if (((bitField0_ & 0x00000010) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, nickname_);
       }
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
+    @java.lang.Override
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(1, userid_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getUsernameBytes());
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, username_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getPasswordBytes());
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, password_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getEmailBytes());
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, email_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, getNicknameBytes());
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, nickname_);
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sunquan.zmqproto.DemoProtos.Login)) {
+        return super.equals(obj);
+      }
+      com.sunquan.zmqproto.DemoProtos.Login other = (com.sunquan.zmqproto.DemoProtos.Login) obj;
+
+      if (hasUserid() != other.hasUserid()) return false;
+      if (hasUserid()) {
+        if (getUserid()
+            != other.getUserid()) return false;
+      }
+      if (hasUsername() != other.hasUsername()) return false;
+      if (hasUsername()) {
+        if (!getUsername()
+            .equals(other.getUsername())) return false;
+      }
+      if (hasPassword() != other.hasPassword()) return false;
+      if (hasPassword()) {
+        if (!getPassword()
+            .equals(other.getPassword())) return false;
+      }
+      if (hasEmail() != other.hasEmail()) return false;
+      if (hasEmail()) {
+        if (!getEmail()
+            .equals(other.getEmail())) return false;
+      }
+      if (hasNickname() != other.hasNickname()) return false;
+      if (hasNickname()) {
+        if (!getNickname()
+            .equals(other.getNickname())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasUserid()) {
+        hash = (37 * hash) + USERID_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getUserid());
+      }
+      if (hasUsername()) {
+        hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getUsername().hashCode();
+      }
+      if (hasPassword()) {
+        hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
+        hash = (53 * hash) + getPassword().hashCode();
+      }
+      if (hasEmail()) {
+        hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+        hash = (53 * hash) + getEmail().hashCode();
+      }
+      if (hasNickname()) {
+        hash = (37 * hash) + NICKNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getNickname().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sunquan.zmqproto.DemoProtos.Login parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sunquan.zmqproto.DemoProtos.Login parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.sunquan.zmqproto.DemoProtos.Login parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -552,46 +657,59 @@ public final class DemoProtos {
     }
     public static com.sunquan.zmqproto.DemoProtos.Login parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.sunquan.zmqproto.DemoProtos.Login parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.sunquan.zmqproto.DemoProtos.Login parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.sunquan.zmqproto.DemoProtos.Login parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.sunquan.zmqproto.DemoProtos.Login parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.sunquan.zmqproto.DemoProtos.Login parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.sunquan.zmqproto.DemoProtos.Login prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(com.sunquan.zmqproto.DemoProtos.Login prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -599,7 +717,7 @@ public final class DemoProtos {
      * Protobuf type {@code com.sunquan.zmqproto.Login}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.sunquan.zmqproto.Login)
         com.sunquan.zmqproto.DemoProtos.LoginOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -607,7 +725,8 @@ public final class DemoProtos {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Login_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Login_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -620,18 +739,16 @@ public final class DemoProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         userid_ = 0L;
@@ -647,19 +764,18 @@ public final class DemoProtos {
         return this;
       }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Login_descriptor;
       }
 
+      @java.lang.Override
       public com.sunquan.zmqproto.DemoProtos.Login getDefaultInstanceForType() {
         return com.sunquan.zmqproto.DemoProtos.Login.getDefaultInstance();
       }
 
+      @java.lang.Override
       public com.sunquan.zmqproto.DemoProtos.Login build() {
         com.sunquan.zmqproto.DemoProtos.Login result = buildPartial();
         if (!result.isInitialized()) {
@@ -668,27 +784,28 @@ public final class DemoProtos {
         return result;
       }
 
+      @java.lang.Override
       public com.sunquan.zmqproto.DemoProtos.Login buildPartial() {
         com.sunquan.zmqproto.DemoProtos.Login result = new com.sunquan.zmqproto.DemoProtos.Login(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.userid_ = userid_;
           to_bitField0_ |= 0x00000001;
         }
-        result.userid_ = userid_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((from_bitField0_ & 0x00000002) != 0)) {
           to_bitField0_ |= 0x00000002;
         }
         result.username_ = username_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+        if (((from_bitField0_ & 0x00000004) != 0)) {
           to_bitField0_ |= 0x00000004;
         }
         result.password_ = password_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((from_bitField0_ & 0x00000008) != 0)) {
           to_bitField0_ |= 0x00000008;
         }
         result.email_ = email_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((from_bitField0_ & 0x00000010) != 0)) {
           to_bitField0_ |= 0x00000010;
         }
         result.nickname_ = nickname_;
@@ -697,6 +814,39 @@ public final class DemoProtos {
         return result;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.sunquan.zmqproto.DemoProtos.Login) {
           return mergeFrom((com.sunquan.zmqproto.DemoProtos.Login)other);
@@ -731,14 +881,17 @@ public final class DemoProtos {
           nickname_ = other.nickname_;
           onChanged();
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -748,7 +901,7 @@ public final class DemoProtos {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.sunquan.zmqproto.DemoProtos.Login) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -761,18 +914,24 @@ public final class DemoProtos {
       private long userid_ ;
       /**
        * <code>optional int64 userid = 1;</code>
+       * @return Whether the userid field is set.
        */
+      @java.lang.Override
       public boolean hasUserid() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <code>optional int64 userid = 1;</code>
+       * @return The userid.
        */
+      @java.lang.Override
       public long getUserid() {
         return userid_;
       }
       /**
        * <code>optional int64 userid = 1;</code>
+       * @param value The userid to set.
+       * @return This builder for chaining.
        */
       public Builder setUserid(long value) {
         bitField0_ |= 0x00000001;
@@ -782,6 +941,7 @@ public final class DemoProtos {
       }
       /**
        * <code>optional int64 userid = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearUserid() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -792,21 +952,23 @@ public final class DemoProtos {
 
       private java.lang.Object username_ = "";
       /**
-       * <code>optional string username = 2;</code>
-       *
        * <pre>
        * name
        * </pre>
+       *
+       * <code>optional string username = 2;</code>
+       * @return Whether the username field is set.
        */
       public boolean hasUsername() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000002) != 0);
       }
       /**
-       * <code>optional string username = 2;</code>
-       *
        * <pre>
        * name
        * </pre>
+       *
+       * <code>optional string username = 2;</code>
+       * @return The username.
        */
       public java.lang.String getUsername() {
         java.lang.Object ref = username_;
@@ -823,11 +985,12 @@ public final class DemoProtos {
         }
       }
       /**
-       * <code>optional string username = 2;</code>
-       *
        * <pre>
        * name
        * </pre>
+       *
+       * <code>optional string username = 2;</code>
+       * @return The bytes for username.
        */
       public com.google.protobuf.ByteString
           getUsernameBytes() {
@@ -843,11 +1006,13 @@ public final class DemoProtos {
         }
       }
       /**
-       * <code>optional string username = 2;</code>
-       *
        * <pre>
        * name
        * </pre>
+       *
+       * <code>optional string username = 2;</code>
+       * @param value The username to set.
+       * @return This builder for chaining.
        */
       public Builder setUsername(
           java.lang.String value) {
@@ -860,11 +1025,12 @@ public final class DemoProtos {
         return this;
       }
       /**
-       * <code>optional string username = 2;</code>
-       *
        * <pre>
        * name
        * </pre>
+       *
+       * <code>optional string username = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearUsername() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -873,11 +1039,13 @@ public final class DemoProtos {
         return this;
       }
       /**
-       * <code>optional string username = 2;</code>
-       *
        * <pre>
        * name
        * </pre>
+       *
+       * <code>optional string username = 2;</code>
+       * @param value The bytes for username to set.
+       * @return This builder for chaining.
        */
       public Builder setUsernameBytes(
           com.google.protobuf.ByteString value) {
@@ -892,21 +1060,23 @@ public final class DemoProtos {
 
       private java.lang.Object password_ = "";
       /**
-       * <code>optional string password = 3;</code>
-       *
        * <pre>
        * passwd
        * </pre>
+       *
+       * <code>optional string password = 3;</code>
+       * @return Whether the password field is set.
        */
       public boolean hasPassword() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000004) != 0);
       }
       /**
-       * <code>optional string password = 3;</code>
-       *
        * <pre>
        * passwd
        * </pre>
+       *
+       * <code>optional string password = 3;</code>
+       * @return The password.
        */
       public java.lang.String getPassword() {
         java.lang.Object ref = password_;
@@ -923,11 +1093,12 @@ public final class DemoProtos {
         }
       }
       /**
-       * <code>optional string password = 3;</code>
-       *
        * <pre>
        * passwd
        * </pre>
+       *
+       * <code>optional string password = 3;</code>
+       * @return The bytes for password.
        */
       public com.google.protobuf.ByteString
           getPasswordBytes() {
@@ -943,11 +1114,13 @@ public final class DemoProtos {
         }
       }
       /**
-       * <code>optional string password = 3;</code>
-       *
        * <pre>
        * passwd
        * </pre>
+       *
+       * <code>optional string password = 3;</code>
+       * @param value The password to set.
+       * @return This builder for chaining.
        */
       public Builder setPassword(
           java.lang.String value) {
@@ -960,11 +1133,12 @@ public final class DemoProtos {
         return this;
       }
       /**
-       * <code>optional string password = 3;</code>
-       *
        * <pre>
        * passwd
        * </pre>
+       *
+       * <code>optional string password = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearPassword() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -973,11 +1147,13 @@ public final class DemoProtos {
         return this;
       }
       /**
-       * <code>optional string password = 3;</code>
-       *
        * <pre>
        * passwd
        * </pre>
+       *
+       * <code>optional string password = 3;</code>
+       * @param value The bytes for password to set.
+       * @return This builder for chaining.
        */
       public Builder setPasswordBytes(
           com.google.protobuf.ByteString value) {
@@ -993,12 +1169,14 @@ public final class DemoProtos {
       private java.lang.Object email_ = "";
       /**
        * <code>optional string email = 4;</code>
+       * @return Whether the email field is set.
        */
       public boolean hasEmail() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000008) != 0);
       }
       /**
        * <code>optional string email = 4;</code>
+       * @return The email.
        */
       public java.lang.String getEmail() {
         java.lang.Object ref = email_;
@@ -1016,6 +1194,7 @@ public final class DemoProtos {
       }
       /**
        * <code>optional string email = 4;</code>
+       * @return The bytes for email.
        */
       public com.google.protobuf.ByteString
           getEmailBytes() {
@@ -1032,6 +1211,8 @@ public final class DemoProtos {
       }
       /**
        * <code>optional string email = 4;</code>
+       * @param value The email to set.
+       * @return This builder for chaining.
        */
       public Builder setEmail(
           java.lang.String value) {
@@ -1045,6 +1226,7 @@ public final class DemoProtos {
       }
       /**
        * <code>optional string email = 4;</code>
+       * @return This builder for chaining.
        */
       public Builder clearEmail() {
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -1054,6 +1236,8 @@ public final class DemoProtos {
       }
       /**
        * <code>optional string email = 4;</code>
+       * @param value The bytes for email to set.
+       * @return This builder for chaining.
        */
       public Builder setEmailBytes(
           com.google.protobuf.ByteString value) {
@@ -1068,21 +1252,23 @@ public final class DemoProtos {
 
       private java.lang.Object nickname_ = "";
       /**
-       * <code>optional string nickname = 5;</code>
-       *
        * <pre>
        * etc ... 
        * </pre>
+       *
+       * <code>optional string nickname = 5;</code>
+       * @return Whether the nickname field is set.
        */
       public boolean hasNickname() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000010) != 0);
       }
       /**
-       * <code>optional string nickname = 5;</code>
-       *
        * <pre>
        * etc ... 
        * </pre>
+       *
+       * <code>optional string nickname = 5;</code>
+       * @return The nickname.
        */
       public java.lang.String getNickname() {
         java.lang.Object ref = nickname_;
@@ -1099,11 +1285,12 @@ public final class DemoProtos {
         }
       }
       /**
-       * <code>optional string nickname = 5;</code>
-       *
        * <pre>
        * etc ... 
        * </pre>
+       *
+       * <code>optional string nickname = 5;</code>
+       * @return The bytes for nickname.
        */
       public com.google.protobuf.ByteString
           getNicknameBytes() {
@@ -1119,11 +1306,13 @@ public final class DemoProtos {
         }
       }
       /**
-       * <code>optional string nickname = 5;</code>
-       *
        * <pre>
        * etc ... 
        * </pre>
+       *
+       * <code>optional string nickname = 5;</code>
+       * @param value The nickname to set.
+       * @return This builder for chaining.
        */
       public Builder setNickname(
           java.lang.String value) {
@@ -1136,11 +1325,12 @@ public final class DemoProtos {
         return this;
       }
       /**
-       * <code>optional string nickname = 5;</code>
-       *
        * <pre>
        * etc ... 
        * </pre>
+       *
+       * <code>optional string nickname = 5;</code>
+       * @return This builder for chaining.
        */
       public Builder clearNickname() {
         bitField0_ = (bitField0_ & ~0x00000010);
@@ -1149,11 +1339,13 @@ public final class DemoProtos {
         return this;
       }
       /**
-       * <code>optional string nickname = 5;</code>
-       *
        * <pre>
        * etc ... 
        * </pre>
+       *
+       * <code>optional string nickname = 5;</code>
+       * @param value The bytes for nickname to set.
+       * @return This builder for chaining.
        */
       public Builder setNicknameBytes(
           com.google.protobuf.ByteString value) {
@@ -1165,16 +1357,57 @@ public final class DemoProtos {
         onChanged();
         return this;
       }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
 
       // @@protoc_insertion_point(builder_scope:com.sunquan.zmqproto.Login)
     }
 
+    // @@protoc_insertion_point(class_scope:com.sunquan.zmqproto.Login)
+    private static final com.sunquan.zmqproto.DemoProtos.Login DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Login(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new com.sunquan.zmqproto.DemoProtos.Login();
     }
 
-    // @@protoc_insertion_point(class_scope:com.sunquan.zmqproto.Login)
+    public static com.sunquan.zmqproto.DemoProtos.Login getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Login>
+        PARSER = new com.google.protobuf.AbstractParser<Login>() {
+      @java.lang.Override
+      public Login parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Login(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Login> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Login> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sunquan.zmqproto.DemoProtos.Login getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface HelloMessageOrBuilder extends
@@ -1183,14 +1416,17 @@ public final class DemoProtos {
 
     /**
      * <code>required string messageText = 1;</code>
+     * @return Whether the messageText field is set.
      */
     boolean hasMessageText();
     /**
      * <code>required string messageText = 1;</code>
+     * @return The messageText.
      */
     java.lang.String getMessageText();
     /**
      * <code>required string messageText = 1;</code>
+     * @return The bytes for messageText.
      */
     com.google.protobuf.ByteString
         getMessageTextBytes();
@@ -1199,36 +1435,38 @@ public final class DemoProtos {
    * Protobuf type {@code com.sunquan.zmqproto.HelloMessage}
    */
   public static final class HelloMessage extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.sunquan.zmqproto.HelloMessage)
       HelloMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use HelloMessage.newBuilder() to construct.
-    private HelloMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private HelloMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private HelloMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final HelloMessage defaultInstance;
-    public static HelloMessage getDefaultInstance() {
-      return defaultInstance;
+    private HelloMessage() {
+      messageText_ = "";
     }
 
-    public HelloMessage getDefaultInstanceForType() {
-      return defaultInstance;
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new HelloMessage();
     }
 
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
+    getUnknownFields() {
       return this.unknownFields;
     }
     private HelloMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -1240,17 +1478,17 @@ public final class DemoProtos {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 10: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
               messageText_ = bs;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
               break;
             }
           }
@@ -1259,7 +1497,7 @@ public final class DemoProtos {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -1270,40 +1508,30 @@ public final class DemoProtos {
       return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_HelloMessage_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_HelloMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.sunquan.zmqproto.DemoProtos.HelloMessage.class, com.sunquan.zmqproto.DemoProtos.HelloMessage.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<HelloMessage> PARSER =
-        new com.google.protobuf.AbstractParser<HelloMessage>() {
-      public HelloMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HelloMessage(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<HelloMessage> getParserForType() {
-      return PARSER;
-    }
-
     private int bitField0_;
     public static final int MESSAGETEXT_FIELD_NUMBER = 1;
-    private java.lang.Object messageText_;
+    private volatile java.lang.Object messageText_;
     /**
      * <code>required string messageText = 1;</code>
+     * @return Whether the messageText field is set.
      */
+    @java.lang.Override
     public boolean hasMessageText() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000001) != 0);
     }
     /**
      * <code>required string messageText = 1;</code>
+     * @return The messageText.
      */
+    @java.lang.Override
     public java.lang.String getMessageText() {
       java.lang.Object ref = messageText_;
       if (ref instanceof java.lang.String) {
@@ -1320,7 +1548,9 @@ public final class DemoProtos {
     }
     /**
      * <code>required string messageText = 1;</code>
+     * @return The bytes for messageText.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getMessageTextBytes() {
       java.lang.Object ref = messageText_;
@@ -1335,10 +1565,8 @@ public final class DemoProtos {
       }
     }
 
-    private void initFields() {
-      messageText_ = "";
-    }
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -1352,37 +1580,75 @@ public final class DemoProtos {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getMessageTextBytes());
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, messageText_);
       }
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
+    @java.lang.Override
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getMessageTextBytes());
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, messageText_);
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sunquan.zmqproto.DemoProtos.HelloMessage)) {
+        return super.equals(obj);
+      }
+      com.sunquan.zmqproto.DemoProtos.HelloMessage other = (com.sunquan.zmqproto.DemoProtos.HelloMessage) obj;
+
+      if (hasMessageText() != other.hasMessageText()) return false;
+      if (hasMessageText()) {
+        if (!getMessageText()
+            .equals(other.getMessageText())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasMessageText()) {
+        hash = (37 * hash) + MESSAGETEXT_FIELD_NUMBER;
+        hash = (53 * hash) + getMessageText().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sunquan.zmqproto.DemoProtos.HelloMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sunquan.zmqproto.DemoProtos.HelloMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.sunquan.zmqproto.DemoProtos.HelloMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1406,46 +1672,59 @@ public final class DemoProtos {
     }
     public static com.sunquan.zmqproto.DemoProtos.HelloMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.sunquan.zmqproto.DemoProtos.HelloMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.sunquan.zmqproto.DemoProtos.HelloMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.sunquan.zmqproto.DemoProtos.HelloMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.sunquan.zmqproto.DemoProtos.HelloMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.sunquan.zmqproto.DemoProtos.HelloMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.sunquan.zmqproto.DemoProtos.HelloMessage prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(com.sunquan.zmqproto.DemoProtos.HelloMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1453,7 +1732,7 @@ public final class DemoProtos {
      * Protobuf type {@code com.sunquan.zmqproto.HelloMessage}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.sunquan.zmqproto.HelloMessage)
         com.sunquan.zmqproto.DemoProtos.HelloMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1461,7 +1740,8 @@ public final class DemoProtos {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_HelloMessage_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_HelloMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1474,18 +1754,16 @@ public final class DemoProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         messageText_ = "";
@@ -1493,19 +1771,18 @@ public final class DemoProtos {
         return this;
       }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_HelloMessage_descriptor;
       }
 
+      @java.lang.Override
       public com.sunquan.zmqproto.DemoProtos.HelloMessage getDefaultInstanceForType() {
         return com.sunquan.zmqproto.DemoProtos.HelloMessage.getDefaultInstance();
       }
 
+      @java.lang.Override
       public com.sunquan.zmqproto.DemoProtos.HelloMessage build() {
         com.sunquan.zmqproto.DemoProtos.HelloMessage result = buildPartial();
         if (!result.isInitialized()) {
@@ -1514,11 +1791,12 @@ public final class DemoProtos {
         return result;
       }
 
+      @java.lang.Override
       public com.sunquan.zmqproto.DemoProtos.HelloMessage buildPartial() {
         com.sunquan.zmqproto.DemoProtos.HelloMessage result = new com.sunquan.zmqproto.DemoProtos.HelloMessage(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((from_bitField0_ & 0x00000001) != 0)) {
           to_bitField0_ |= 0x00000001;
         }
         result.messageText_ = messageText_;
@@ -1527,6 +1805,39 @@ public final class DemoProtos {
         return result;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.sunquan.zmqproto.DemoProtos.HelloMessage) {
           return mergeFrom((com.sunquan.zmqproto.DemoProtos.HelloMessage)other);
@@ -1543,18 +1854,20 @@ public final class DemoProtos {
           messageText_ = other.messageText_;
           onChanged();
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         if (!hasMessageText()) {
-          
           return false;
         }
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1564,7 +1877,7 @@ public final class DemoProtos {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.sunquan.zmqproto.DemoProtos.HelloMessage) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -1577,12 +1890,14 @@ public final class DemoProtos {
       private java.lang.Object messageText_ = "";
       /**
        * <code>required string messageText = 1;</code>
+       * @return Whether the messageText field is set.
        */
       public boolean hasMessageText() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <code>required string messageText = 1;</code>
+       * @return The messageText.
        */
       public java.lang.String getMessageText() {
         java.lang.Object ref = messageText_;
@@ -1600,6 +1915,7 @@ public final class DemoProtos {
       }
       /**
        * <code>required string messageText = 1;</code>
+       * @return The bytes for messageText.
        */
       public com.google.protobuf.ByteString
           getMessageTextBytes() {
@@ -1616,6 +1932,8 @@ public final class DemoProtos {
       }
       /**
        * <code>required string messageText = 1;</code>
+       * @param value The messageText to set.
+       * @return This builder for chaining.
        */
       public Builder setMessageText(
           java.lang.String value) {
@@ -1629,6 +1947,7 @@ public final class DemoProtos {
       }
       /**
        * <code>required string messageText = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMessageText() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -1638,6 +1957,8 @@ public final class DemoProtos {
       }
       /**
        * <code>required string messageText = 1;</code>
+       * @param value The bytes for messageText to set.
+       * @return This builder for chaining.
        */
       public Builder setMessageTextBytes(
           com.google.protobuf.ByteString value) {
@@ -1649,16 +1970,57 @@ public final class DemoProtos {
         onChanged();
         return this;
       }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
 
       // @@protoc_insertion_point(builder_scope:com.sunquan.zmqproto.HelloMessage)
     }
 
+    // @@protoc_insertion_point(class_scope:com.sunquan.zmqproto.HelloMessage)
+    private static final com.sunquan.zmqproto.DemoProtos.HelloMessage DEFAULT_INSTANCE;
     static {
-      defaultInstance = new HelloMessage(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new com.sunquan.zmqproto.DemoProtos.HelloMessage();
     }
 
-    // @@protoc_insertion_point(class_scope:com.sunquan.zmqproto.HelloMessage)
+    public static com.sunquan.zmqproto.DemoProtos.HelloMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<HelloMessage>
+        PARSER = new com.google.protobuf.AbstractParser<HelloMessage>() {
+      @java.lang.Override
+      public HelloMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new HelloMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<HelloMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HelloMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sunquan.zmqproto.DemoProtos.HelloMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface AlertOrBuilder extends
@@ -1667,28 +2029,36 @@ public final class DemoProtos {
 
     /**
      * <code>required int32 severity = 1;</code>
+     * @return Whether the severity field is set.
      */
     boolean hasSeverity();
     /**
      * <code>required int32 severity = 1;</code>
+     * @return The severity.
      */
     int getSeverity();
 
     /**
      * <code>repeated string message = 2;</code>
+     * @return A list containing the message.
      */
-    com.google.protobuf.ProtocolStringList
+    java.util.List<java.lang.String>
         getMessageList();
     /**
      * <code>repeated string message = 2;</code>
+     * @return The count of message.
      */
     int getMessageCount();
     /**
      * <code>repeated string message = 2;</code>
+     * @param index The index of the element to return.
+     * @return The message at the given index.
      */
     java.lang.String getMessage(int index);
     /**
      * <code>repeated string message = 2;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the message at the given index.
      */
     com.google.protobuf.ByteString
         getMessageBytes(int index);
@@ -1697,36 +2067,38 @@ public final class DemoProtos {
    * Protobuf type {@code com.sunquan.zmqproto.Alert}
    */
   public static final class Alert extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.sunquan.zmqproto.Alert)
       AlertOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Alert.newBuilder() to construct.
-    private Alert(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Alert(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Alert(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Alert defaultInstance;
-    public static Alert getDefaultInstance() {
-      return defaultInstance;
+    private Alert() {
+      message_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
-    public Alert getDefaultInstanceForType() {
-      return defaultInstance;
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Alert();
     }
 
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
+    getUnknownFields() {
       return this.unknownFields;
     }
     private Alert(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -1738,13 +2110,6 @@ public final class DemoProtos {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 8: {
               bitField0_ |= 0x00000001;
               severity_ = input.readInt32();
@@ -1752,11 +2117,18 @@ public final class DemoProtos {
             }
             case 18: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                 message_ = new com.google.protobuf.LazyStringArrayList();
                 mutable_bitField0_ |= 0x00000002;
               }
               message_.add(bs);
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
               break;
             }
           }
@@ -1765,9 +2137,9 @@ public final class DemoProtos {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
           message_ = message_.getUnmodifiableView();
         }
         this.unknownFields = unknownFields.build();
@@ -1779,26 +2151,12 @@ public final class DemoProtos {
       return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Alert_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Alert_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.sunquan.zmqproto.DemoProtos.Alert.class, com.sunquan.zmqproto.DemoProtos.Alert.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<Alert> PARSER =
-        new com.google.protobuf.AbstractParser<Alert>() {
-      public Alert parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Alert(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Alert> getParserForType() {
-      return PARSER;
     }
 
     private int bitField0_;
@@ -1806,13 +2164,17 @@ public final class DemoProtos {
     private int severity_;
     /**
      * <code>required int32 severity = 1;</code>
+     * @return Whether the severity field is set.
      */
+    @java.lang.Override
     public boolean hasSeverity() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000001) != 0);
     }
     /**
      * <code>required int32 severity = 1;</code>
+     * @return The severity.
      */
+    @java.lang.Override
     public int getSeverity() {
       return severity_;
     }
@@ -1821,6 +2183,7 @@ public final class DemoProtos {
     private com.google.protobuf.LazyStringList message_;
     /**
      * <code>repeated string message = 2;</code>
+     * @return A list containing the message.
      */
     public com.google.protobuf.ProtocolStringList
         getMessageList() {
@@ -1828,29 +2191,31 @@ public final class DemoProtos {
     }
     /**
      * <code>repeated string message = 2;</code>
+     * @return The count of message.
      */
     public int getMessageCount() {
       return message_.size();
     }
     /**
      * <code>repeated string message = 2;</code>
+     * @param index The index of the element to return.
+     * @return The message at the given index.
      */
     public java.lang.String getMessage(int index) {
       return message_.get(index);
     }
     /**
      * <code>repeated string message = 2;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the message at the given index.
      */
     public com.google.protobuf.ByteString
         getMessageBytes(int index) {
       return message_.getByteString(index);
     }
 
-    private void initFields() {
-      severity_ = 0;
-      message_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-    }
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -1864,49 +2229,93 @@ public final class DemoProtos {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000001) != 0)) {
         output.writeInt32(1, severity_);
       }
       for (int i = 0; i < message_.size(); i++) {
-        output.writeBytes(2, message_.getByteString(i));
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_.getRaw(i));
       }
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
+    @java.lang.Override
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, severity_);
       }
       {
         int dataSize = 0;
         for (int i = 0; i < message_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeBytesSizeNoTag(message_.getByteString(i));
+          dataSize += computeStringSizeNoTag(message_.getRaw(i));
         }
         size += dataSize;
         size += 1 * getMessageList().size();
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sunquan.zmqproto.DemoProtos.Alert)) {
+        return super.equals(obj);
+      }
+      com.sunquan.zmqproto.DemoProtos.Alert other = (com.sunquan.zmqproto.DemoProtos.Alert) obj;
+
+      if (hasSeverity() != other.hasSeverity()) return false;
+      if (hasSeverity()) {
+        if (getSeverity()
+            != other.getSeverity()) return false;
+      }
+      if (!getMessageList()
+          .equals(other.getMessageList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasSeverity()) {
+        hash = (37 * hash) + SEVERITY_FIELD_NUMBER;
+        hash = (53 * hash) + getSeverity();
+      }
+      if (getMessageCount() > 0) {
+        hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+        hash = (53 * hash) + getMessageList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sunquan.zmqproto.DemoProtos.Alert parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sunquan.zmqproto.DemoProtos.Alert parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.sunquan.zmqproto.DemoProtos.Alert parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1930,46 +2339,59 @@ public final class DemoProtos {
     }
     public static com.sunquan.zmqproto.DemoProtos.Alert parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.sunquan.zmqproto.DemoProtos.Alert parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.sunquan.zmqproto.DemoProtos.Alert parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.sunquan.zmqproto.DemoProtos.Alert parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.sunquan.zmqproto.DemoProtos.Alert parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.sunquan.zmqproto.DemoProtos.Alert parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.sunquan.zmqproto.DemoProtos.Alert prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(com.sunquan.zmqproto.DemoProtos.Alert prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1977,7 +2399,7 @@ public final class DemoProtos {
      * Protobuf type {@code com.sunquan.zmqproto.Alert}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.sunquan.zmqproto.Alert)
         com.sunquan.zmqproto.DemoProtos.AlertOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1985,7 +2407,8 @@ public final class DemoProtos {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Alert_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Alert_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1998,18 +2421,16 @@ public final class DemoProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         severity_ = 0;
@@ -2019,19 +2440,18 @@ public final class DemoProtos {
         return this;
       }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Alert_descriptor;
       }
 
+      @java.lang.Override
       public com.sunquan.zmqproto.DemoProtos.Alert getDefaultInstanceForType() {
         return com.sunquan.zmqproto.DemoProtos.Alert.getDefaultInstance();
       }
 
+      @java.lang.Override
       public com.sunquan.zmqproto.DemoProtos.Alert build() {
         com.sunquan.zmqproto.DemoProtos.Alert result = buildPartial();
         if (!result.isInitialized()) {
@@ -2040,15 +2460,16 @@ public final class DemoProtos {
         return result;
       }
 
+      @java.lang.Override
       public com.sunquan.zmqproto.DemoProtos.Alert buildPartial() {
         com.sunquan.zmqproto.DemoProtos.Alert result = new com.sunquan.zmqproto.DemoProtos.Alert(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.severity_ = severity_;
           to_bitField0_ |= 0x00000001;
         }
-        result.severity_ = severity_;
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((bitField0_ & 0x00000002) != 0)) {
           message_ = message_.getUnmodifiableView();
           bitField0_ = (bitField0_ & ~0x00000002);
         }
@@ -2058,6 +2479,39 @@ public final class DemoProtos {
         return result;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.sunquan.zmqproto.DemoProtos.Alert) {
           return mergeFrom((com.sunquan.zmqproto.DemoProtos.Alert)other);
@@ -2082,18 +2536,20 @@ public final class DemoProtos {
           }
           onChanged();
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         if (!hasSeverity()) {
-          
           return false;
         }
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2103,7 +2559,7 @@ public final class DemoProtos {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.sunquan.zmqproto.DemoProtos.Alert) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -2116,18 +2572,24 @@ public final class DemoProtos {
       private int severity_ ;
       /**
        * <code>required int32 severity = 1;</code>
+       * @return Whether the severity field is set.
        */
+      @java.lang.Override
       public boolean hasSeverity() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <code>required int32 severity = 1;</code>
+       * @return The severity.
        */
+      @java.lang.Override
       public int getSeverity() {
         return severity_;
       }
       /**
        * <code>required int32 severity = 1;</code>
+       * @param value The severity to set.
+       * @return This builder for chaining.
        */
       public Builder setSeverity(int value) {
         bitField0_ |= 0x00000001;
@@ -2137,6 +2599,7 @@ public final class DemoProtos {
       }
       /**
        * <code>required int32 severity = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearSeverity() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -2147,13 +2610,14 @@ public final class DemoProtos {
 
       private com.google.protobuf.LazyStringList message_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureMessageIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+        if (!((bitField0_ & 0x00000002) != 0)) {
           message_ = new com.google.protobuf.LazyStringArrayList(message_);
           bitField0_ |= 0x00000002;
          }
       }
       /**
        * <code>repeated string message = 2;</code>
+       * @return A list containing the message.
        */
       public com.google.protobuf.ProtocolStringList
           getMessageList() {
@@ -2161,18 +2625,23 @@ public final class DemoProtos {
       }
       /**
        * <code>repeated string message = 2;</code>
+       * @return The count of message.
        */
       public int getMessageCount() {
         return message_.size();
       }
       /**
        * <code>repeated string message = 2;</code>
+       * @param index The index of the element to return.
+       * @return The message at the given index.
        */
       public java.lang.String getMessage(int index) {
         return message_.get(index);
       }
       /**
        * <code>repeated string message = 2;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the message at the given index.
        */
       public com.google.protobuf.ByteString
           getMessageBytes(int index) {
@@ -2180,6 +2649,9 @@ public final class DemoProtos {
       }
       /**
        * <code>repeated string message = 2;</code>
+       * @param index The index to set the value at.
+       * @param value The message to set.
+       * @return This builder for chaining.
        */
       public Builder setMessage(
           int index, java.lang.String value) {
@@ -2193,6 +2665,8 @@ public final class DemoProtos {
       }
       /**
        * <code>repeated string message = 2;</code>
+       * @param value The message to add.
+       * @return This builder for chaining.
        */
       public Builder addMessage(
           java.lang.String value) {
@@ -2206,6 +2680,8 @@ public final class DemoProtos {
       }
       /**
        * <code>repeated string message = 2;</code>
+       * @param values The message to add.
+       * @return This builder for chaining.
        */
       public Builder addAllMessage(
           java.lang.Iterable<java.lang.String> values) {
@@ -2217,6 +2693,7 @@ public final class DemoProtos {
       }
       /**
        * <code>repeated string message = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearMessage() {
         message_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -2226,6 +2703,8 @@ public final class DemoProtos {
       }
       /**
        * <code>repeated string message = 2;</code>
+       * @param value The bytes of the message to add.
+       * @return This builder for chaining.
        */
       public Builder addMessageBytes(
           com.google.protobuf.ByteString value) {
@@ -2237,16 +2716,57 @@ public final class DemoProtos {
         onChanged();
         return this;
       }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
 
       // @@protoc_insertion_point(builder_scope:com.sunquan.zmqproto.Alert)
     }
 
+    // @@protoc_insertion_point(class_scope:com.sunquan.zmqproto.Alert)
+    private static final com.sunquan.zmqproto.DemoProtos.Alert DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Alert(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new com.sunquan.zmqproto.DemoProtos.Alert();
     }
 
-    // @@protoc_insertion_point(class_scope:com.sunquan.zmqproto.Alert)
+    public static com.sunquan.zmqproto.DemoProtos.Alert getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Alert>
+        PARSER = new com.google.protobuf.AbstractParser<Alert>() {
+      @java.lang.Override
+      public Alert parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Alert(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Alert> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Alert> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sunquan.zmqproto.DemoProtos.Alert getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface TaskOrBuilder extends
@@ -2255,24 +2775,29 @@ public final class DemoProtos {
 
     /**
      * <code>required string taskName = 1;</code>
+     * @return Whether the taskName field is set.
      */
     boolean hasTaskName();
     /**
      * <code>required string taskName = 1;</code>
+     * @return The taskName.
      */
     java.lang.String getTaskName();
     /**
      * <code>required string taskName = 1;</code>
+     * @return The bytes for taskName.
      */
     com.google.protobuf.ByteString
         getTaskNameBytes();
 
     /**
      * <code>required int32 workload = 2;</code>
+     * @return Whether the workload field is set.
      */
     boolean hasWorkload();
     /**
      * <code>required int32 workload = 2;</code>
+     * @return The workload.
      */
     int getWorkload();
   }
@@ -2280,36 +2805,38 @@ public final class DemoProtos {
    * Protobuf type {@code com.sunquan.zmqproto.Task}
    */
   public static final class Task extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.sunquan.zmqproto.Task)
       TaskOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Task.newBuilder() to construct.
-    private Task(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Task(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Task(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Task defaultInstance;
-    public static Task getDefaultInstance() {
-      return defaultInstance;
+    private Task() {
+      taskName_ = "";
     }
 
-    public Task getDefaultInstanceForType() {
-      return defaultInstance;
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Task();
     }
 
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
+    getUnknownFields() {
       return this.unknownFields;
     }
     private Task(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -2321,13 +2848,6 @@ public final class DemoProtos {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 10: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
@@ -2339,13 +2859,20 @@ public final class DemoProtos {
               workload_ = input.readInt32();
               break;
             }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -2356,40 +2883,30 @@ public final class DemoProtos {
       return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Task_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Task_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.sunquan.zmqproto.DemoProtos.Task.class, com.sunquan.zmqproto.DemoProtos.Task.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Task> PARSER =
-        new com.google.protobuf.AbstractParser<Task>() {
-      public Task parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Task(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Task> getParserForType() {
-      return PARSER;
-    }
-
     private int bitField0_;
     public static final int TASKNAME_FIELD_NUMBER = 1;
-    private java.lang.Object taskName_;
+    private volatile java.lang.Object taskName_;
     /**
      * <code>required string taskName = 1;</code>
+     * @return Whether the taskName field is set.
      */
+    @java.lang.Override
     public boolean hasTaskName() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000001) != 0);
     }
     /**
      * <code>required string taskName = 1;</code>
+     * @return The taskName.
      */
+    @java.lang.Override
     public java.lang.String getTaskName() {
       java.lang.Object ref = taskName_;
       if (ref instanceof java.lang.String) {
@@ -2406,7 +2923,9 @@ public final class DemoProtos {
     }
     /**
      * <code>required string taskName = 1;</code>
+     * @return The bytes for taskName.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getTaskNameBytes() {
       java.lang.Object ref = taskName_;
@@ -2425,22 +2944,23 @@ public final class DemoProtos {
     private int workload_;
     /**
      * <code>required int32 workload = 2;</code>
+     * @return Whether the workload field is set.
      */
+    @java.lang.Override
     public boolean hasWorkload() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000002) != 0);
     }
     /**
      * <code>required int32 workload = 2;</code>
+     * @return The workload.
      */
+    @java.lang.Override
     public int getWorkload() {
       return workload_;
     }
 
-    private void initFields() {
-      taskName_ = "";
-      workload_ = 0;
-    }
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -2458,44 +2978,91 @@ public final class DemoProtos {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getTaskNameBytes());
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, taskName_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000002) != 0)) {
         output.writeInt32(2, workload_);
       }
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
+    @java.lang.Override
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getTaskNameBytes());
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, taskName_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, workload_);
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sunquan.zmqproto.DemoProtos.Task)) {
+        return super.equals(obj);
+      }
+      com.sunquan.zmqproto.DemoProtos.Task other = (com.sunquan.zmqproto.DemoProtos.Task) obj;
+
+      if (hasTaskName() != other.hasTaskName()) return false;
+      if (hasTaskName()) {
+        if (!getTaskName()
+            .equals(other.getTaskName())) return false;
+      }
+      if (hasWorkload() != other.hasWorkload()) return false;
+      if (hasWorkload()) {
+        if (getWorkload()
+            != other.getWorkload()) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTaskName()) {
+        hash = (37 * hash) + TASKNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getTaskName().hashCode();
+      }
+      if (hasWorkload()) {
+        hash = (37 * hash) + WORKLOAD_FIELD_NUMBER;
+        hash = (53 * hash) + getWorkload();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sunquan.zmqproto.DemoProtos.Task parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sunquan.zmqproto.DemoProtos.Task parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.sunquan.zmqproto.DemoProtos.Task parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2519,46 +3086,59 @@ public final class DemoProtos {
     }
     public static com.sunquan.zmqproto.DemoProtos.Task parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.sunquan.zmqproto.DemoProtos.Task parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.sunquan.zmqproto.DemoProtos.Task parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.sunquan.zmqproto.DemoProtos.Task parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.sunquan.zmqproto.DemoProtos.Task parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.sunquan.zmqproto.DemoProtos.Task parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.sunquan.zmqproto.DemoProtos.Task prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(com.sunquan.zmqproto.DemoProtos.Task prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -2566,7 +3146,7 @@ public final class DemoProtos {
      * Protobuf type {@code com.sunquan.zmqproto.Task}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.sunquan.zmqproto.Task)
         com.sunquan.zmqproto.DemoProtos.TaskOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -2574,7 +3154,8 @@ public final class DemoProtos {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Task_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Task_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -2587,18 +3168,16 @@ public final class DemoProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         taskName_ = "";
@@ -2608,19 +3187,18 @@ public final class DemoProtos {
         return this;
       }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Task_descriptor;
       }
 
+      @java.lang.Override
       public com.sunquan.zmqproto.DemoProtos.Task getDefaultInstanceForType() {
         return com.sunquan.zmqproto.DemoProtos.Task.getDefaultInstance();
       }
 
+      @java.lang.Override
       public com.sunquan.zmqproto.DemoProtos.Task build() {
         com.sunquan.zmqproto.DemoProtos.Task result = buildPartial();
         if (!result.isInitialized()) {
@@ -2629,23 +3207,57 @@ public final class DemoProtos {
         return result;
       }
 
+      @java.lang.Override
       public com.sunquan.zmqproto.DemoProtos.Task buildPartial() {
         com.sunquan.zmqproto.DemoProtos.Task result = new com.sunquan.zmqproto.DemoProtos.Task(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((from_bitField0_ & 0x00000001) != 0)) {
           to_bitField0_ |= 0x00000001;
         }
         result.taskName_ = taskName_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.workload_ = workload_;
           to_bitField0_ |= 0x00000002;
         }
-        result.workload_ = workload_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.sunquan.zmqproto.DemoProtos.Task) {
           return mergeFrom((com.sunquan.zmqproto.DemoProtos.Task)other);
@@ -2665,22 +3277,23 @@ public final class DemoProtos {
         if (other.hasWorkload()) {
           setWorkload(other.getWorkload());
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         if (!hasTaskName()) {
-          
           return false;
         }
         if (!hasWorkload()) {
-          
           return false;
         }
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2690,7 +3303,7 @@ public final class DemoProtos {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.sunquan.zmqproto.DemoProtos.Task) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -2703,12 +3316,14 @@ public final class DemoProtos {
       private java.lang.Object taskName_ = "";
       /**
        * <code>required string taskName = 1;</code>
+       * @return Whether the taskName field is set.
        */
       public boolean hasTaskName() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <code>required string taskName = 1;</code>
+       * @return The taskName.
        */
       public java.lang.String getTaskName() {
         java.lang.Object ref = taskName_;
@@ -2726,6 +3341,7 @@ public final class DemoProtos {
       }
       /**
        * <code>required string taskName = 1;</code>
+       * @return The bytes for taskName.
        */
       public com.google.protobuf.ByteString
           getTaskNameBytes() {
@@ -2742,6 +3358,8 @@ public final class DemoProtos {
       }
       /**
        * <code>required string taskName = 1;</code>
+       * @param value The taskName to set.
+       * @return This builder for chaining.
        */
       public Builder setTaskName(
           java.lang.String value) {
@@ -2755,6 +3373,7 @@ public final class DemoProtos {
       }
       /**
        * <code>required string taskName = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearTaskName() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -2764,6 +3383,8 @@ public final class DemoProtos {
       }
       /**
        * <code>required string taskName = 1;</code>
+       * @param value The bytes for taskName to set.
+       * @return This builder for chaining.
        */
       public Builder setTaskNameBytes(
           com.google.protobuf.ByteString value) {
@@ -2779,18 +3400,24 @@ public final class DemoProtos {
       private int workload_ ;
       /**
        * <code>required int32 workload = 2;</code>
+       * @return Whether the workload field is set.
        */
+      @java.lang.Override
       public boolean hasWorkload() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000002) != 0);
       }
       /**
        * <code>required int32 workload = 2;</code>
+       * @return The workload.
        */
+      @java.lang.Override
       public int getWorkload() {
         return workload_;
       }
       /**
        * <code>required int32 workload = 2;</code>
+       * @param value The workload to set.
+       * @return This builder for chaining.
        */
       public Builder setWorkload(int value) {
         bitField0_ |= 0x00000002;
@@ -2800,6 +3427,7 @@ public final class DemoProtos {
       }
       /**
        * <code>required int32 workload = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearWorkload() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -2807,16 +3435,57 @@ public final class DemoProtos {
         onChanged();
         return this;
       }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
 
       // @@protoc_insertion_point(builder_scope:com.sunquan.zmqproto.Task)
     }
 
+    // @@protoc_insertion_point(class_scope:com.sunquan.zmqproto.Task)
+    private static final com.sunquan.zmqproto.DemoProtos.Task DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Task(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new com.sunquan.zmqproto.DemoProtos.Task();
     }
 
-    // @@protoc_insertion_point(class_scope:com.sunquan.zmqproto.Task)
+    public static com.sunquan.zmqproto.DemoProtos.Task getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Task>
+        PARSER = new com.google.protobuf.AbstractParser<Task>() {
+      @java.lang.Override
+      public Task parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Task(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Task> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Task> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sunquan.zmqproto.DemoProtos.Task getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface PersonOrBuilder extends
@@ -2825,37 +3494,45 @@ public final class DemoProtos {
 
     /**
      * <code>required string name = 1;</code>
+     * @return Whether the name field is set.
      */
     boolean hasName();
     /**
      * <code>required string name = 1;</code>
+     * @return The name.
      */
     java.lang.String getName();
     /**
      * <code>required string name = 1;</code>
+     * @return The bytes for name.
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
      * <code>required int32 id = 2;</code>
+     * @return Whether the id field is set.
      */
     boolean hasId();
     /**
      * <code>required int32 id = 2;</code>
+     * @return The id.
      */
     int getId();
 
     /**
      * <code>optional string email = 3;</code>
+     * @return Whether the email field is set.
      */
     boolean hasEmail();
     /**
      * <code>optional string email = 3;</code>
+     * @return The email.
      */
     java.lang.String getEmail();
     /**
      * <code>optional string email = 3;</code>
+     * @return The bytes for email.
      */
     com.google.protobuf.ByteString
         getEmailBytes();
@@ -2888,36 +3565,40 @@ public final class DemoProtos {
    * Protobuf type {@code com.sunquan.zmqproto.Person}
    */
   public static final class Person extends
-      com.google.protobuf.GeneratedMessage implements
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:com.sunquan.zmqproto.Person)
       PersonOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use Person.newBuilder() to construct.
-    private Person(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Person(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Person(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Person defaultInstance;
-    public static Person getDefaultInstance() {
-      return defaultInstance;
+    private Person() {
+      name_ = "";
+      email_ = "";
+      phone_ = java.util.Collections.emptyList();
     }
 
-    public Person getDefaultInstanceForType() {
-      return defaultInstance;
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Person();
     }
 
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
+    getUnknownFields() {
       return this.unknownFields;
     }
     private Person(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -2929,13 +3610,6 @@ public final class DemoProtos {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
             case 10: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
@@ -2954,11 +3628,19 @@ public final class DemoProtos {
               break;
             }
             case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+              if (!((mutable_bitField0_ & 0x00000008) != 0)) {
                 phone_ = new java.util.ArrayList<com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              phone_.add(input.readMessage(com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber.PARSER, extensionRegistry));
+              phone_.add(
+                  input.readMessage(com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber.PARSER, extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
               break;
             }
           }
@@ -2967,9 +3649,9 @@ public final class DemoProtos {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField0_ & 0x00000008) != 0)) {
           phone_ = java.util.Collections.unmodifiableList(phone_);
         }
         this.unknownFields = unknownFields.build();
@@ -2981,26 +3663,12 @@ public final class DemoProtos {
       return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Person_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Person_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.sunquan.zmqproto.DemoProtos.Person.class, com.sunquan.zmqproto.DemoProtos.Person.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<Person> PARSER =
-        new com.google.protobuf.AbstractParser<Person>() {
-      public Person parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Person(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Person> getParserForType() {
-      return PARSER;
     }
 
     /**
@@ -3011,15 +3679,15 @@ public final class DemoProtos {
       /**
        * <code>MOBILE = 0;</code>
        */
-      MOBILE(0, 0),
+      MOBILE(0),
       /**
        * <code>HOME = 1;</code>
        */
-      HOME(1, 1),
+      HOME(1),
       /**
        * <code>WORK = 2;</code>
        */
-      WORK(2, 2),
+      WORK(2),
       ;
 
       /**
@@ -3036,9 +3704,25 @@ public final class DemoProtos {
       public static final int WORK_VALUE = 2;
 
 
-      public final int getNumber() { return value; }
+      public final int getNumber() {
+        return value;
+      }
 
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
       public static PhoneType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static PhoneType forNumber(int value) {
         switch (value) {
           case 0: return MOBILE;
           case 1: return HOME;
@@ -3051,17 +3735,17 @@ public final class DemoProtos {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static com.google.protobuf.Internal.EnumLiteMap<PhoneType>
-          internalValueMap =
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          PhoneType> internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<PhoneType>() {
               public PhoneType findValueByNumber(int number) {
-                return PhoneType.valueOf(number);
+                return PhoneType.forNumber(number);
               }
             };
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
+        return getDescriptor().getValues().get(ordinal());
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptorForType() {
@@ -3083,11 +3767,9 @@ public final class DemoProtos {
         return VALUES[desc.getIndex()];
       }
 
-      private final int index;
       private final int value;
 
-      private PhoneType(int index, int value) {
-        this.index = index;
+      private PhoneType(int value) {
         this.value = value;
       }
 
@@ -3100,24 +3782,29 @@ public final class DemoProtos {
 
       /**
        * <code>required string number = 1;</code>
+       * @return Whether the number field is set.
        */
       boolean hasNumber();
       /**
        * <code>required string number = 1;</code>
+       * @return The number.
        */
       java.lang.String getNumber();
       /**
        * <code>required string number = 1;</code>
+       * @return The bytes for number.
        */
       com.google.protobuf.ByteString
           getNumberBytes();
 
       /**
        * <code>optional .com.sunquan.zmqproto.Person.PhoneType type = 2 [default = HOME];</code>
+       * @return Whether the type field is set.
        */
       boolean hasType();
       /**
        * <code>optional .com.sunquan.zmqproto.Person.PhoneType type = 2 [default = HOME];</code>
+       * @return The type.
        */
       com.sunquan.zmqproto.DemoProtos.Person.PhoneType getType();
     }
@@ -3125,36 +3812,39 @@ public final class DemoProtos {
      * Protobuf type {@code com.sunquan.zmqproto.Person.PhoneNumber}
      */
     public static final class PhoneNumber extends
-        com.google.protobuf.GeneratedMessage implements
+        com.google.protobuf.GeneratedMessageV3 implements
         // @@protoc_insertion_point(message_implements:com.sunquan.zmqproto.Person.PhoneNumber)
         PhoneNumberOrBuilder {
+    private static final long serialVersionUID = 0L;
       // Use PhoneNumber.newBuilder() to construct.
-      private PhoneNumber(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      private PhoneNumber(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
-        this.unknownFields = builder.getUnknownFields();
       }
-      private PhoneNumber(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-      private static final PhoneNumber defaultInstance;
-      public static PhoneNumber getDefaultInstance() {
-        return defaultInstance;
+      private PhoneNumber() {
+        number_ = "";
+        type_ = 1;
       }
 
-      public PhoneNumber getDefaultInstanceForType() {
-        return defaultInstance;
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new PhoneNumber();
       }
 
-      private final com.google.protobuf.UnknownFieldSet unknownFields;
       @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
-          getUnknownFields() {
+      getUnknownFields() {
         return this.unknownFields;
       }
       private PhoneNumber(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        initFields();
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
         int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -3166,13 +3856,6 @@ public final class DemoProtos {
               case 0:
                 done = true;
                 break;
-              default: {
-                if (!parseUnknownField(input, unknownFields,
-                                       extensionRegistry, tag)) {
-                  done = true;
-                }
-                break;
-              }
               case 10: {
                 com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000001;
@@ -3181,12 +3864,20 @@ public final class DemoProtos {
               }
               case 16: {
                 int rawValue = input.readEnum();
+                  @SuppressWarnings("deprecation")
                 com.sunquan.zmqproto.DemoProtos.Person.PhoneType value = com.sunquan.zmqproto.DemoProtos.Person.PhoneType.valueOf(rawValue);
                 if (value == null) {
                   unknownFields.mergeVarintField(2, rawValue);
                 } else {
                   bitField0_ |= 0x00000002;
-                  type_ = value;
+                  type_ = rawValue;
+                }
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
                 }
                 break;
               }
@@ -3196,7 +3887,7 @@ public final class DemoProtos {
           throw e.setUnfinishedMessage(this);
         } catch (java.io.IOException e) {
           throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(this);
+              e).setUnfinishedMessage(this);
         } finally {
           this.unknownFields = unknownFields.build();
           makeExtensionsImmutable();
@@ -3207,40 +3898,30 @@ public final class DemoProtos {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Person_PhoneNumber_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Person_PhoneNumber_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber.class, com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber.Builder.class);
       }
 
-      public static com.google.protobuf.Parser<PhoneNumber> PARSER =
-          new com.google.protobuf.AbstractParser<PhoneNumber>() {
-        public PhoneNumber parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new PhoneNumber(input, extensionRegistry);
-        }
-      };
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<PhoneNumber> getParserForType() {
-        return PARSER;
-      }
-
       private int bitField0_;
       public static final int NUMBER_FIELD_NUMBER = 1;
-      private java.lang.Object number_;
+      private volatile java.lang.Object number_;
       /**
        * <code>required string number = 1;</code>
+       * @return Whether the number field is set.
        */
+      @java.lang.Override
       public boolean hasNumber() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <code>required string number = 1;</code>
+       * @return The number.
        */
+      @java.lang.Override
       public java.lang.String getNumber() {
         java.lang.Object ref = number_;
         if (ref instanceof java.lang.String) {
@@ -3257,7 +3938,9 @@ public final class DemoProtos {
       }
       /**
        * <code>required string number = 1;</code>
+       * @return The bytes for number.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
           getNumberBytes() {
         java.lang.Object ref = number_;
@@ -3273,25 +3956,26 @@ public final class DemoProtos {
       }
 
       public static final int TYPE_FIELD_NUMBER = 2;
-      private com.sunquan.zmqproto.DemoProtos.Person.PhoneType type_;
+      private int type_;
       /**
        * <code>optional .com.sunquan.zmqproto.Person.PhoneType type = 2 [default = HOME];</code>
+       * @return Whether the type field is set.
        */
-      public boolean hasType() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+      @java.lang.Override public boolean hasType() {
+        return ((bitField0_ & 0x00000002) != 0);
       }
       /**
        * <code>optional .com.sunquan.zmqproto.Person.PhoneType type = 2 [default = HOME];</code>
+       * @return The type.
        */
-      public com.sunquan.zmqproto.DemoProtos.Person.PhoneType getType() {
-        return type_;
+      @java.lang.Override public com.sunquan.zmqproto.DemoProtos.Person.PhoneType getType() {
+        @SuppressWarnings("deprecation")
+        com.sunquan.zmqproto.DemoProtos.Person.PhoneType result = com.sunquan.zmqproto.DemoProtos.Person.PhoneType.valueOf(type_);
+        return result == null ? com.sunquan.zmqproto.DemoProtos.Person.PhoneType.HOME : result;
       }
 
-      private void initFields() {
-        number_ = "";
-        type_ = com.sunquan.zmqproto.DemoProtos.Person.PhoneType.HOME;
-      }
       private byte memoizedIsInitialized = -1;
+      @java.lang.Override
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
         if (isInitialized == 1) return true;
@@ -3305,44 +3989,90 @@ public final class DemoProtos {
         return true;
       }
 
+      @java.lang.Override
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        getSerializedSize();
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeBytes(1, getNumberBytes());
+        if (((bitField0_ & 0x00000001) != 0)) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, number_);
         }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          output.writeEnum(2, type_.getNumber());
+        if (((bitField0_ & 0x00000002) != 0)) {
+          output.writeEnum(2, type_);
         }
-        getUnknownFields().writeTo(output);
+        unknownFields.writeTo(output);
       }
 
-      private int memoizedSerializedSize = -1;
+      @java.lang.Override
       public int getSerializedSize() {
-        int size = memoizedSerializedSize;
+        int size = memoizedSize;
         if (size != -1) return size;
 
         size = 0;
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(1, getNumberBytes());
+        if (((bitField0_ & 0x00000001) != 0)) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, number_);
         }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((bitField0_ & 0x00000002) != 0)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeEnumSize(2, type_.getNumber());
+            .computeEnumSize(2, type_);
         }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
         return size;
       }
 
-      private static final long serialVersionUID = 0L;
       @java.lang.Override
-      protected java.lang.Object writeReplace()
-          throws java.io.ObjectStreamException {
-        return super.writeReplace();
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber)) {
+          return super.equals(obj);
+        }
+        com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber other = (com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber) obj;
+
+        if (hasNumber() != other.hasNumber()) return false;
+        if (hasNumber()) {
+          if (!getNumber()
+              .equals(other.getNumber())) return false;
+        }
+        if (hasType() != other.hasType()) return false;
+        if (hasType()) {
+          if (type_ != other.type_) return false;
+        }
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
       }
 
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        if (hasNumber()) {
+          hash = (37 * hash) + NUMBER_FIELD_NUMBER;
+          hash = (53 * hash) + getNumber().hashCode();
+        }
+        if (hasType()) {
+          hash = (37 * hash) + TYPE_FIELD_NUMBER;
+          hash = (53 * hash) + type_;
+        }
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
       public static com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3366,46 +4096,59 @@ public final class DemoProtos {
       }
       public static com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber parseFrom(java.io.InputStream input)
           throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
       }
       public static com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
       }
       public static com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
       }
       public static com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
       public static com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
       }
       public static com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
       }
 
-      public static Builder newBuilder() { return Builder.create(); }
+      @java.lang.Override
       public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber prototype) {
-        return newBuilder().mergeFrom(prototype);
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
       }
-      public Builder toBuilder() { return newBuilder(this); }
+      public static Builder newBuilder(com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
 
       @java.lang.Override
       protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         Builder builder = new Builder(parent);
         return builder;
       }
@@ -3413,7 +4156,7 @@ public final class DemoProtos {
        * Protobuf type {@code com.sunquan.zmqproto.Person.PhoneNumber}
        */
       public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
           // @@protoc_insertion_point(builder_implements:com.sunquan.zmqproto.Person.PhoneNumber)
           com.sunquan.zmqproto.DemoProtos.Person.PhoneNumberOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
@@ -3421,7 +4164,8 @@ public final class DemoProtos {
           return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Person_PhoneNumber_descriptor;
         }
 
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
           return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Person_PhoneNumber_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
@@ -3434,40 +4178,37 @@ public final class DemoProtos {
         }
 
         private Builder(
-            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
           maybeForceBuilderInitialization();
         }
         private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
           }
         }
-        private static Builder create() {
-          return new Builder();
-        }
-
+        @java.lang.Override
         public Builder clear() {
           super.clear();
           number_ = "";
           bitField0_ = (bitField0_ & ~0x00000001);
-          type_ = com.sunquan.zmqproto.DemoProtos.Person.PhoneType.HOME;
+          type_ = 1;
           bitField0_ = (bitField0_ & ~0x00000002);
           return this;
         }
 
-        public Builder clone() {
-          return create().mergeFrom(buildPartial());
-        }
-
+        @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
           return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Person_PhoneNumber_descriptor;
         }
 
+        @java.lang.Override
         public com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber getDefaultInstanceForType() {
           return com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber.getDefaultInstance();
         }
 
+        @java.lang.Override
         public com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber build() {
           com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber result = buildPartial();
           if (!result.isInitialized()) {
@@ -3476,15 +4217,16 @@ public final class DemoProtos {
           return result;
         }
 
+        @java.lang.Override
         public com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber buildPartial() {
           com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber result = new com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
-          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          if (((from_bitField0_ & 0x00000001) != 0)) {
             to_bitField0_ |= 0x00000001;
           }
           result.number_ = number_;
-          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          if (((from_bitField0_ & 0x00000002) != 0)) {
             to_bitField0_ |= 0x00000002;
           }
           result.type_ = type_;
@@ -3493,6 +4235,39 @@ public final class DemoProtos {
           return result;
         }
 
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
           if (other instanceof com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber) {
             return mergeFrom((com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber)other);
@@ -3512,18 +4287,20 @@ public final class DemoProtos {
           if (other.hasType()) {
             setType(other.getType());
           }
-          this.mergeUnknownFields(other.getUnknownFields());
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
           return this;
         }
 
+        @java.lang.Override
         public final boolean isInitialized() {
           if (!hasNumber()) {
-            
             return false;
           }
           return true;
         }
 
+        @java.lang.Override
         public Builder mergeFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3533,7 +4310,7 @@ public final class DemoProtos {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
             parsedMessage = (com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber) e.getUnfinishedMessage();
-            throw e;
+            throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
               mergeFrom(parsedMessage);
@@ -3546,12 +4323,14 @@ public final class DemoProtos {
         private java.lang.Object number_ = "";
         /**
          * <code>required string number = 1;</code>
+         * @return Whether the number field is set.
          */
         public boolean hasNumber() {
-          return ((bitField0_ & 0x00000001) == 0x00000001);
+          return ((bitField0_ & 0x00000001) != 0);
         }
         /**
          * <code>required string number = 1;</code>
+         * @return The number.
          */
         public java.lang.String getNumber() {
           java.lang.Object ref = number_;
@@ -3569,6 +4348,7 @@ public final class DemoProtos {
         }
         /**
          * <code>required string number = 1;</code>
+         * @return The bytes for number.
          */
         public com.google.protobuf.ByteString
             getNumberBytes() {
@@ -3585,6 +4365,8 @@ public final class DemoProtos {
         }
         /**
          * <code>required string number = 1;</code>
+         * @param value The number to set.
+         * @return This builder for chaining.
          */
         public Builder setNumber(
             java.lang.String value) {
@@ -3598,6 +4380,7 @@ public final class DemoProtos {
         }
         /**
          * <code>required string number = 1;</code>
+         * @return This builder for chaining.
          */
         public Builder clearNumber() {
           bitField0_ = (bitField0_ & ~0x00000001);
@@ -3607,6 +4390,8 @@ public final class DemoProtos {
         }
         /**
          * <code>required string number = 1;</code>
+         * @param value The bytes for number to set.
+         * @return This builder for chaining.
          */
         public Builder setNumberBytes(
             com.google.protobuf.ByteString value) {
@@ -3619,64 +4404,117 @@ public final class DemoProtos {
           return this;
         }
 
-        private com.sunquan.zmqproto.DemoProtos.Person.PhoneType type_ = com.sunquan.zmqproto.DemoProtos.Person.PhoneType.HOME;
+        private int type_ = 1;
         /**
          * <code>optional .com.sunquan.zmqproto.Person.PhoneType type = 2 [default = HOME];</code>
+         * @return Whether the type field is set.
          */
-        public boolean hasType() {
-          return ((bitField0_ & 0x00000002) == 0x00000002);
+        @java.lang.Override public boolean hasType() {
+          return ((bitField0_ & 0x00000002) != 0);
         }
         /**
          * <code>optional .com.sunquan.zmqproto.Person.PhoneType type = 2 [default = HOME];</code>
+         * @return The type.
          */
+        @java.lang.Override
         public com.sunquan.zmqproto.DemoProtos.Person.PhoneType getType() {
-          return type_;
+          @SuppressWarnings("deprecation")
+          com.sunquan.zmqproto.DemoProtos.Person.PhoneType result = com.sunquan.zmqproto.DemoProtos.Person.PhoneType.valueOf(type_);
+          return result == null ? com.sunquan.zmqproto.DemoProtos.Person.PhoneType.HOME : result;
         }
         /**
          * <code>optional .com.sunquan.zmqproto.Person.PhoneType type = 2 [default = HOME];</code>
+         * @param value The type to set.
+         * @return This builder for chaining.
          */
         public Builder setType(com.sunquan.zmqproto.DemoProtos.Person.PhoneType value) {
           if (value == null) {
             throw new NullPointerException();
           }
           bitField0_ |= 0x00000002;
-          type_ = value;
+          type_ = value.getNumber();
           onChanged();
           return this;
         }
         /**
          * <code>optional .com.sunquan.zmqproto.Person.PhoneType type = 2 [default = HOME];</code>
+         * @return This builder for chaining.
          */
         public Builder clearType() {
           bitField0_ = (bitField0_ & ~0x00000002);
-          type_ = com.sunquan.zmqproto.DemoProtos.Person.PhoneType.HOME;
+          type_ = 1;
           onChanged();
           return this;
         }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
 
         // @@protoc_insertion_point(builder_scope:com.sunquan.zmqproto.Person.PhoneNumber)
       }
 
+      // @@protoc_insertion_point(class_scope:com.sunquan.zmqproto.Person.PhoneNumber)
+      private static final com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber DEFAULT_INSTANCE;
       static {
-        defaultInstance = new PhoneNumber(true);
-        defaultInstance.initFields();
+        DEFAULT_INSTANCE = new com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber();
       }
 
-      // @@protoc_insertion_point(class_scope:com.sunquan.zmqproto.Person.PhoneNumber)
+      public static com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      @java.lang.Deprecated public static final com.google.protobuf.Parser<PhoneNumber>
+          PARSER = new com.google.protobuf.AbstractParser<PhoneNumber>() {
+        @java.lang.Override
+        public PhoneNumber parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new PhoneNumber(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<PhoneNumber> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<PhoneNumber> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
     }
 
     private int bitField0_;
     public static final int NAME_FIELD_NUMBER = 1;
-    private java.lang.Object name_;
+    private volatile java.lang.Object name_;
     /**
      * <code>required string name = 1;</code>
+     * @return Whether the name field is set.
      */
+    @java.lang.Override
     public boolean hasName() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000001) != 0);
     }
     /**
      * <code>required string name = 1;</code>
+     * @return The name.
      */
+    @java.lang.Override
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
@@ -3693,7 +4531,9 @@ public final class DemoProtos {
     }
     /**
      * <code>required string name = 1;</code>
+     * @return The bytes for name.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getNameBytes() {
       java.lang.Object ref = name_;
@@ -3712,28 +4552,36 @@ public final class DemoProtos {
     private int id_;
     /**
      * <code>required int32 id = 2;</code>
+     * @return Whether the id field is set.
      */
+    @java.lang.Override
     public boolean hasId() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000002) != 0);
     }
     /**
      * <code>required int32 id = 2;</code>
+     * @return The id.
      */
+    @java.lang.Override
     public int getId() {
       return id_;
     }
 
     public static final int EMAIL_FIELD_NUMBER = 3;
-    private java.lang.Object email_;
+    private volatile java.lang.Object email_;
     /**
      * <code>optional string email = 3;</code>
+     * @return Whether the email field is set.
      */
+    @java.lang.Override
     public boolean hasEmail() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000004) != 0);
     }
     /**
      * <code>optional string email = 3;</code>
+     * @return The email.
      */
+    @java.lang.Override
     public java.lang.String getEmail() {
       java.lang.Object ref = email_;
       if (ref instanceof java.lang.String) {
@@ -3750,7 +4598,9 @@ public final class DemoProtos {
     }
     /**
      * <code>optional string email = 3;</code>
+     * @return The bytes for email.
      */
+    @java.lang.Override
     public com.google.protobuf.ByteString
         getEmailBytes() {
       java.lang.Object ref = email_;
@@ -3770,12 +4620,14 @@ public final class DemoProtos {
     /**
      * <code>repeated .com.sunquan.zmqproto.Person.PhoneNumber phone = 4;</code>
      */
+    @java.lang.Override
     public java.util.List<com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber> getPhoneList() {
       return phone_;
     }
     /**
      * <code>repeated .com.sunquan.zmqproto.Person.PhoneNumber phone = 4;</code>
      */
+    @java.lang.Override
     public java.util.List<? extends com.sunquan.zmqproto.DemoProtos.Person.PhoneNumberOrBuilder> 
         getPhoneOrBuilderList() {
       return phone_;
@@ -3783,30 +4635,28 @@ public final class DemoProtos {
     /**
      * <code>repeated .com.sunquan.zmqproto.Person.PhoneNumber phone = 4;</code>
      */
+    @java.lang.Override
     public int getPhoneCount() {
       return phone_.size();
     }
     /**
      * <code>repeated .com.sunquan.zmqproto.Person.PhoneNumber phone = 4;</code>
      */
+    @java.lang.Override
     public com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber getPhone(int index) {
       return phone_.get(index);
     }
     /**
      * <code>repeated .com.sunquan.zmqproto.Person.PhoneNumber phone = 4;</code>
      */
+    @java.lang.Override
     public com.sunquan.zmqproto.DemoProtos.Person.PhoneNumberOrBuilder getPhoneOrBuilder(
         int index) {
       return phone_.get(index);
     }
 
-    private void initFields() {
-      name_ = "";
-      id_ = 0;
-      email_ = "";
-      phone_ = java.util.Collections.emptyList();
-    }
     private byte memoizedIsInitialized = -1;
+    @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -3830,58 +4680,119 @@ public final class DemoProtos {
       return true;
     }
 
+    @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getNameBytes());
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000002) != 0)) {
         output.writeInt32(2, id_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getEmailBytes());
+      if (((bitField0_ & 0x00000004) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, email_);
       }
       for (int i = 0; i < phone_.size(); i++) {
         output.writeMessage(4, phone_.get(i));
       }
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
+    @java.lang.Override
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getNameBytes());
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, id_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getEmailBytes());
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, email_);
       }
       for (int i = 0; i < phone_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, phone_.get(i));
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.sunquan.zmqproto.DemoProtos.Person)) {
+        return super.equals(obj);
+      }
+      com.sunquan.zmqproto.DemoProtos.Person other = (com.sunquan.zmqproto.DemoProtos.Person) obj;
+
+      if (hasName() != other.hasName()) return false;
+      if (hasName()) {
+        if (!getName()
+            .equals(other.getName())) return false;
+      }
+      if (hasId() != other.hasId()) return false;
+      if (hasId()) {
+        if (getId()
+            != other.getId()) return false;
+      }
+      if (hasEmail() != other.hasEmail()) return false;
+      if (hasEmail()) {
+        if (!getEmail()
+            .equals(other.getEmail())) return false;
+      }
+      if (!getPhoneList()
+          .equals(other.getPhoneList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
     }
 
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasName()) {
+        hash = (37 * hash) + NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getName().hashCode();
+      }
+      if (hasId()) {
+        hash = (37 * hash) + ID_FIELD_NUMBER;
+        hash = (53 * hash) + getId();
+      }
+      if (hasEmail()) {
+        hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+        hash = (53 * hash) + getEmail().hashCode();
+      }
+      if (getPhoneCount() > 0) {
+        hash = (37 * hash) + PHONE_FIELD_NUMBER;
+        hash = (53 * hash) + getPhoneList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.sunquan.zmqproto.DemoProtos.Person parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.sunquan.zmqproto.DemoProtos.Person parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static com.sunquan.zmqproto.DemoProtos.Person parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3905,46 +4816,59 @@ public final class DemoProtos {
     }
     public static com.sunquan.zmqproto.DemoProtos.Person parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.sunquan.zmqproto.DemoProtos.Person parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.sunquan.zmqproto.DemoProtos.Person parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static com.sunquan.zmqproto.DemoProtos.Person parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static com.sunquan.zmqproto.DemoProtos.Person parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static com.sunquan.zmqproto.DemoProtos.Person parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
+    @java.lang.Override
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.sunquan.zmqproto.DemoProtos.Person prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(com.sunquan.zmqproto.DemoProtos.Person prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -3952,7 +4876,7 @@ public final class DemoProtos {
      * Protobuf type {@code com.sunquan.zmqproto.Person}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.sunquan.zmqproto.Person)
         com.sunquan.zmqproto.DemoProtos.PersonOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -3960,7 +4884,8 @@ public final class DemoProtos {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Person_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Person_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -3973,19 +4898,17 @@ public final class DemoProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getPhoneFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
+      @java.lang.Override
       public Builder clear() {
         super.clear();
         name_ = "";
@@ -4003,19 +4926,18 @@ public final class DemoProtos {
         return this;
       }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
+      @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
         return com.sunquan.zmqproto.DemoProtos.internal_static_com_sunquan_zmqproto_Person_descriptor;
       }
 
+      @java.lang.Override
       public com.sunquan.zmqproto.DemoProtos.Person getDefaultInstanceForType() {
         return com.sunquan.zmqproto.DemoProtos.Person.getDefaultInstance();
       }
 
+      @java.lang.Override
       public com.sunquan.zmqproto.DemoProtos.Person build() {
         com.sunquan.zmqproto.DemoProtos.Person result = buildPartial();
         if (!result.isInitialized()) {
@@ -4024,24 +4946,25 @@ public final class DemoProtos {
         return result;
       }
 
+      @java.lang.Override
       public com.sunquan.zmqproto.DemoProtos.Person buildPartial() {
         com.sunquan.zmqproto.DemoProtos.Person result = new com.sunquan.zmqproto.DemoProtos.Person(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((from_bitField0_ & 0x00000001) != 0)) {
           to_bitField0_ |= 0x00000001;
         }
         result.name_ = name_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.id_ = id_;
           to_bitField0_ |= 0x00000002;
         }
-        result.id_ = id_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+        if (((from_bitField0_ & 0x00000004) != 0)) {
           to_bitField0_ |= 0x00000004;
         }
         result.email_ = email_;
         if (phoneBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          if (((bitField0_ & 0x00000008) != 0)) {
             phone_ = java.util.Collections.unmodifiableList(phone_);
             bitField0_ = (bitField0_ & ~0x00000008);
           }
@@ -4054,6 +4977,39 @@ public final class DemoProtos {
         return result;
       }
 
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.sunquan.zmqproto.DemoProtos.Person) {
           return mergeFrom((com.sunquan.zmqproto.DemoProtos.Person)other);
@@ -4097,35 +5053,35 @@ public final class DemoProtos {
               phone_ = other.phone_;
               bitField0_ = (bitField0_ & ~0x00000008);
               phoneBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getPhoneFieldBuilder() : null;
             } else {
               phoneBuilder_.addAllMessages(other.phone_);
             }
           }
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
         return this;
       }
 
+      @java.lang.Override
       public final boolean isInitialized() {
         if (!hasName()) {
-          
           return false;
         }
         if (!hasId()) {
-          
           return false;
         }
         for (int i = 0; i < getPhoneCount(); i++) {
           if (!getPhone(i).isInitialized()) {
-            
             return false;
           }
         }
         return true;
       }
 
+      @java.lang.Override
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -4135,7 +5091,7 @@ public final class DemoProtos {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (com.sunquan.zmqproto.DemoProtos.Person) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -4148,12 +5104,14 @@ public final class DemoProtos {
       private java.lang.Object name_ = "";
       /**
        * <code>required string name = 1;</code>
+       * @return Whether the name field is set.
        */
       public boolean hasName() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <code>required string name = 1;</code>
+       * @return The name.
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -4171,6 +5129,7 @@ public final class DemoProtos {
       }
       /**
        * <code>required string name = 1;</code>
+       * @return The bytes for name.
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -4187,6 +5146,8 @@ public final class DemoProtos {
       }
       /**
        * <code>required string name = 1;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
        */
       public Builder setName(
           java.lang.String value) {
@@ -4200,6 +5161,7 @@ public final class DemoProtos {
       }
       /**
        * <code>required string name = 1;</code>
+       * @return This builder for chaining.
        */
       public Builder clearName() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -4209,6 +5171,8 @@ public final class DemoProtos {
       }
       /**
        * <code>required string name = 1;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -4224,18 +5188,24 @@ public final class DemoProtos {
       private int id_ ;
       /**
        * <code>required int32 id = 2;</code>
+       * @return Whether the id field is set.
        */
+      @java.lang.Override
       public boolean hasId() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000002) != 0);
       }
       /**
        * <code>required int32 id = 2;</code>
+       * @return The id.
        */
+      @java.lang.Override
       public int getId() {
         return id_;
       }
       /**
        * <code>required int32 id = 2;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
        */
       public Builder setId(int value) {
         bitField0_ |= 0x00000002;
@@ -4245,6 +5215,7 @@ public final class DemoProtos {
       }
       /**
        * <code>required int32 id = 2;</code>
+       * @return This builder for chaining.
        */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -4256,12 +5227,14 @@ public final class DemoProtos {
       private java.lang.Object email_ = "";
       /**
        * <code>optional string email = 3;</code>
+       * @return Whether the email field is set.
        */
       public boolean hasEmail() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000004) != 0);
       }
       /**
        * <code>optional string email = 3;</code>
+       * @return The email.
        */
       public java.lang.String getEmail() {
         java.lang.Object ref = email_;
@@ -4279,6 +5252,7 @@ public final class DemoProtos {
       }
       /**
        * <code>optional string email = 3;</code>
+       * @return The bytes for email.
        */
       public com.google.protobuf.ByteString
           getEmailBytes() {
@@ -4295,6 +5269,8 @@ public final class DemoProtos {
       }
       /**
        * <code>optional string email = 3;</code>
+       * @param value The email to set.
+       * @return This builder for chaining.
        */
       public Builder setEmail(
           java.lang.String value) {
@@ -4308,6 +5284,7 @@ public final class DemoProtos {
       }
       /**
        * <code>optional string email = 3;</code>
+       * @return This builder for chaining.
        */
       public Builder clearEmail() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -4317,6 +5294,8 @@ public final class DemoProtos {
       }
       /**
        * <code>optional string email = 3;</code>
+       * @param value The bytes for email to set.
+       * @return This builder for chaining.
        */
       public Builder setEmailBytes(
           com.google.protobuf.ByteString value) {
@@ -4332,13 +5311,13 @@ public final class DemoProtos {
       private java.util.List<com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber> phone_ =
         java.util.Collections.emptyList();
       private void ensurePhoneIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (!((bitField0_ & 0x00000008) != 0)) {
           phone_ = new java.util.ArrayList<com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber>(phone_);
           bitField0_ |= 0x00000008;
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber, com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber.Builder, com.sunquan.zmqproto.DemoProtos.Person.PhoneNumberOrBuilder> phoneBuilder_;
 
       /**
@@ -4554,68 +5533,109 @@ public final class DemoProtos {
            getPhoneBuilderList() {
         return getPhoneFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber, com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber.Builder, com.sunquan.zmqproto.DemoProtos.Person.PhoneNumberOrBuilder> 
           getPhoneFieldBuilder() {
         if (phoneBuilder_ == null) {
-          phoneBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          phoneBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber, com.sunquan.zmqproto.DemoProtos.Person.PhoneNumber.Builder, com.sunquan.zmqproto.DemoProtos.Person.PhoneNumberOrBuilder>(
                   phone_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  ((bitField0_ & 0x00000008) != 0),
                   getParentForChildren(),
                   isClean());
           phone_ = null;
         }
         return phoneBuilder_;
       }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
 
       // @@protoc_insertion_point(builder_scope:com.sunquan.zmqproto.Person)
     }
 
+    // @@protoc_insertion_point(class_scope:com.sunquan.zmqproto.Person)
+    private static final com.sunquan.zmqproto.DemoProtos.Person DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Person(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new com.sunquan.zmqproto.DemoProtos.Person();
     }
 
-    // @@protoc_insertion_point(class_scope:com.sunquan.zmqproto.Person)
+    public static com.sunquan.zmqproto.DemoProtos.Person getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Person>
+        PARSER = new com.google.protobuf.AbstractParser<Person>() {
+      @java.lang.Override
+      public Person parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Person(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Person> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Person> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.sunquan.zmqproto.DemoProtos.Person getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_sunquan_zmqproto_Login_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_sunquan_zmqproto_Login_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_sunquan_zmqproto_HelloMessage_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_sunquan_zmqproto_HelloMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_sunquan_zmqproto_Alert_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_sunquan_zmqproto_Alert_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_sunquan_zmqproto_Task_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_sunquan_zmqproto_Task_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_sunquan_zmqproto_Person_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_sunquan_zmqproto_Person_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_sunquan_zmqproto_Person_PhoneNumber_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_sunquan_zmqproto_Person_PhoneNumber_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static com.google.protobuf.Descriptors.FileDescriptor
+  private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -4628,58 +5648,50 @@ public final class DemoProtos {
       "orkload\030\002 \002(\005\"\362\001\n\006Person\022\014\n\004name\030\001 \002(\t\022\n" +
       "\n\002id\030\002 \002(\005\022\r\n\005email\030\003 \001(\t\0227\n\005phone\030\004 \003(\013" +
       "2(.com.sunquan.zmqproto.Person.PhoneNumb" +
-      "er\032Y\n\013PhoneNumber\022\016\n\006number\030\001 \002(\t\022:\n\004typ",
+      "er\032Y\n\013PhoneNumber\022\016\n\006number\030\001 \002(\t\022:\n\004typ" +
       "e\030\002 \001(\0162&.com.sunquan.zmqproto.Person.Ph" +
       "oneType:\004HOME\"+\n\tPhoneType\022\n\n\006MOBILE\020\000\022\010" +
       "\n\004HOME\020\001\022\010\n\004WORK\020\002B\"\n\024com.sunquan.zmqpro" +
       "toB\nDemoProtos"
     };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
-          public com.google.protobuf.ExtensionRegistry assignDescriptors(
-              com.google.protobuf.Descriptors.FileDescriptor root) {
-            descriptor = root;
-            return null;
-          }
-        };
-    com.google.protobuf.Descriptors.FileDescriptor
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
+        });
     internal_static_com_sunquan_zmqproto_Login_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_com_sunquan_zmqproto_Login_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_sunquan_zmqproto_Login_descriptor,
         new java.lang.String[] { "Userid", "Username", "Password", "Email", "Nickname", });
     internal_static_com_sunquan_zmqproto_HelloMessage_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_com_sunquan_zmqproto_HelloMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_sunquan_zmqproto_HelloMessage_descriptor,
         new java.lang.String[] { "MessageText", });
     internal_static_com_sunquan_zmqproto_Alert_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_com_sunquan_zmqproto_Alert_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_sunquan_zmqproto_Alert_descriptor,
         new java.lang.String[] { "Severity", "Message", });
     internal_static_com_sunquan_zmqproto_Task_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_com_sunquan_zmqproto_Task_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_sunquan_zmqproto_Task_descriptor,
         new java.lang.String[] { "TaskName", "Workload", });
     internal_static_com_sunquan_zmqproto_Person_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_com_sunquan_zmqproto_Person_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_sunquan_zmqproto_Person_descriptor,
         new java.lang.String[] { "Name", "Id", "Email", "Phone", });
     internal_static_com_sunquan_zmqproto_Person_PhoneNumber_descriptor =
       internal_static_com_sunquan_zmqproto_Person_descriptor.getNestedTypes().get(0);
     internal_static_com_sunquan_zmqproto_Person_PhoneNumber_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_sunquan_zmqproto_Person_PhoneNumber_descriptor,
         new java.lang.String[] { "Number", "Type", });
   }

@@ -18,6 +18,6 @@ public class SigTerm {
      * @param task to run on reception of the signal.
      */
     public static void register(final Runnable task) {
-        Signal.handle(new Signal("TERM"), (signal) -> task.run());
+//        Signal.handle(new Signal("TERM"), (signal) -> task.run());
     }
 }
