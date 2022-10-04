@@ -13,7 +13,7 @@
     <properties>
         <application.main.class>com.sunquan.zmqproto.jredis.RedisQuery</application.main.class>
         <zeromq.version>0.4.3</zeromq.version>
-        <protobuf.version>3.16.1</protobuf.version>
+        <protobuf.version>3.16.3</protobuf.version>
         <jredis.version>2.1.0</jredis.version>
     </properties>
 
