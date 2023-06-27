@@ -15,13 +15,17 @@ public class HelloWorldClient {
     private final ManagedChannel channel;
     private final GreeterGrpc.GreeterBlockingStub blockingStub;
 
-    /** Construct client for accessing HelloWorld server using the existing channel. */
+    /**
+     * Construct client for accessing HelloWorld server using the existing channel.
+     */
     HelloWorldClient(ManagedChannel channel) {
         this.channel = channel;
         blockingStub = GreeterGrpc.newBlockingStub(channel);
     }
 
-    /** Construct client connecting to HelloWorld server at {@code host:port}. */
+    /**
+     * Construct client connecting to HelloWorld server at {@code host:port}.
+     */
     public HelloWorldClient(String host, int port) {
         this(ManagedChannelBuilder.forAddress(host, port)
                 // Channels are secure by default (via SSL/TLS). For the example we disable TLS to avoid
@@ -33,7 +37,9 @@ public class HelloWorldClient {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
 
-    /** 向服务端发送 hello 消息. */
+    /**
+     * 向服务端发送 hello 消息.
+     */
     public void greet(String name) {
         System.out.println("send => [" + name + "] ...");
         HelloRequest request = HelloRequest.newBuilder().setName(name).build();
