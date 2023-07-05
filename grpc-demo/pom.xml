@@ -16,7 +16,7 @@
 
     <properties>
         <application.main.class>com.sq.grpc.HelloWorldClient</application.main.class>
-        <grpc.version>1.24.1</grpc.version>
+        <grpc.version>1.53.0</grpc.version>
         <protoc.version>3.10.0</protoc.version>
         <protobuf.version>3.10.0</protobuf.version>
     </properties>
